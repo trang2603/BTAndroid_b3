@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.Fragment1">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In ra số lần xuất hiện của mỗi kí tự"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="48dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nhập 1 chuỗi String" />
+
+        <EditText
+            android:id="@+id/edtText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="text"
+            android:minLines="2"
+            android:scrollbars="vertical"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout"
+        android:gravity="center"
+        android:text="Đếm số lần xuất hiện của các kí tự"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/txtResults"
+        android:layout_width="match_parent"
+        android:layout_below="@id/btnCount"
+        android:layout_margin="16dp"
+        android:layout_height="match_parent"/>
+
+
+
+</RelativeLayout>
