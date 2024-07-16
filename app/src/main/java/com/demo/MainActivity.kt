@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.viewPager.adapter = FragmentAdapter(this)
 
         //thay đổi khi ckick vào icon của các fragment

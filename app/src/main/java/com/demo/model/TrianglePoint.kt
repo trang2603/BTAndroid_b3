@@ -8,23 +8,6 @@ data class Point(val x:Float, val y:Float)
 
 object Geometry{
     fun isPointInTriangle(point: Point, triangle: Triangle ): Boolean {
-        /*//hướng của point so với cạnh
-        val d1 = sign(point, triangel.p1, triangel.p2)
-        val d2 = sign(point, triangel.p1, triangel.p3)
-        val d3 = sign(point, triangel.p2, triangel.p3)
-
-        //check point nằm bên phải hay trái của cạnh tam giác
-        //âm bên phải, dương nằm bên trái
-        val hasNeg = (d1<0 || d2 <0 || d3<0)
-        val hasPos = (d1>0 || d2 >0 || d3>0)
-
-        Log.e("", "21 $hasPos")
-        Log.e("", "22 $hasNeg")
-
-        //point thuộc triangle nếu các giá trị định hướng cùng dấu
-        //hasPos true || hasNeg true thì point thuộc triangle
-        return !(hasPos && hasNeg)*/
-
         val x = point.x
         val y = point.y
 
