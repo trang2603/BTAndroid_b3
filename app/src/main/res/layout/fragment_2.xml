@@ -6,15 +6,38 @@
             name="viewModel"
             type="com.demo.viewModel.TrianglePointViewModel" />
     </data>
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.demo.fragment.TriangleView
-            android:id="@+id/triangleView"
+        <TextView
+            android:id="@+id/resetTriangleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Nhấn vào đây để vẽ lại tam giác"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_margin="16sp"
+            android:layout_gravity="top"/>
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=""
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:textStyle="bold"
+
+            android:layout_gravity="top"/>
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </FrameLayout>
+            android:layout_height="match_parent">
+            <com.demo.fragment.TriangleView
+                android:id="@+id/triangleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+    </LinearLayout>
 </layout>

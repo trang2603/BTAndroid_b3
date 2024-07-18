@@ -18,6 +18,8 @@ class Fragment2 :
     TriangleView.TriangleTouchListener {
     private lateinit var binding: Fragment2Binding
     val viewModel: TrianglePointViewModel by viewModels()
+    private val points = mutableListOf<Point>()
+    private var isTriangleCreated = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +36,10 @@ class Fragment2 :
     ) {
         super.onViewCreated(view, savedInstanceState)
         binding.triangleView.setTriangleTouchListener(this)
+
+        binding.resetTriangleButton.setOnClickListener {
+            resetTriangle()
+        }
 
         viewModel.triangle.observe(
             viewLifecycleOwner,
@@ -54,27 +60,33 @@ class Fragment2 :
                 displayMessage(isInTriangle) //viewModel.point.value!!)
             },
         )
-
-        val triangle =
-            Triangle(
-                Point(300f, 300f),
-                Point(600f, 600f),
-                Point(900f, 300f),
-            )
-        viewModel.setTriangle(triangle)
     }
 
     private fun displayMessage(inTraingle: Boolean/*, point: Point*/) {
         val message =
             if (inTraingle) {
-                "Điểm A nằm bên trong tam giác"
+                binding.text.setText("Điểm vừa chọn nằm bên trong tam giác")
             } else {
-                "Điểm A không nằm bên trong tam giác"
+                binding.text.setText("Điểm vừa chọn nằm bên ngoài tam giác")
             }
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onTouch(point: Point) {
-        viewModel.setPoint(point)
+        if(!isTriangleCreated) {
+            points.add(point)
+            if (points.size == 3) {
+                val triangle = Triangle(points[0], points[1], points[2])
+                viewModel.setTriangle(triangle)
+                points.clear()
+                isTriangleCreated = true
+            }
+        }
+        else viewModel.setPoint(point)
+    }
+    private fun resetTriangle() {
+        points.clear()
+        isTriangleCreated = false
+        viewModel.setTriangle(Triangle(Point(0f, 0f), Point(0f, 0f), Point(0f, 0f)))
+        binding.triangleView.invalidate()
     }
 }
